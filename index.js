@@ -17,6 +17,20 @@ var api = new ParseServer({
   appId: process.env.APP_ID || 'myAppId',
   masterKey: process.env.MASTER_KEY || '', //Add your master key here. Keep it secret!
   serverURL: process.env.SERVER_URL || 'http://localhost:1337/parse',  // Don't forget to change to https if needed
+  push: {
+    ios: [
+           {
+            pfx: '/Users/Dominic/heroku/server4/parse-server-example/Certs/DEV.p12', // Dev PFX or P12
+            bundleId: 'dominicvitucci.parseServerTest',
+            production: false // Dev
+            },
+            {
+            pfx: '/Users/Dominic/heroku/server4/parse-server-example/Certs/PROD.p12', // Prod PFX or P12
+            bundleId: 'dominicvitucci.parseServerTest',
+            production: true // Prod
+            }
+          ]
+        }
   liveQuery: {
     classNames: ["Posts", "Comments"] // List of classes to support for query subscriptions
   }
